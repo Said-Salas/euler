@@ -1,23 +1,18 @@
-ways = [
-    'x: 2 => y: -2', 
-    'x: 1 => y: -1 => x: 1 => y: -1',
-    ''
-    ]
+from itertools import combinations
 
+grid_size = 2
+total_moves = grid_size * 2
+positions = range(total_moves)
 
-lattice = [
-    [[0, 0], [1, 0], [2, 0]],
-    [[0, -1], [1, -1], [2, -1]],
-    [[0, -2], [1, -2], [2, -2]]
-]
-car = [0, 0]
-pRoutes = 0
-arrived = False
+right_position_choices = combinations(positions, grid_size)
 
-while arrived is not True: 
-    for i in range (10):
-        print(i)
+for right_positions in right_position_choices:
+    path = ""
 
-    arrived = not arrived
+    for current_position in positions:
+        if current_position in right_positions:
+            path += "R"
+        else:
+            path += "D"
 
-print(arrived)
+    print(path)
