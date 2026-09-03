@@ -4,6 +4,5 @@ letterCounts = {
     40: 5, 50: 5, 60: 5, 70: 7, 80: 7, 90: 6, 100: 10, 'and': 3, 1000: 8
 }
 
-
-for i in letterCounts:
-    print(letterCounts[i])
+def countLetters(number):
+    tens = 
