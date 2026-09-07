@@ -22,4 +22,4 @@ def countLetters(number):
 
     print(numLetters)
 
-countLetters(1)
+countLetters(100)
