@@ -4,14 +4,12 @@ letterCounts = {
     40: 5, 50: 5, 60: 5, 70: 7, 80: 6, 90: 6, 100: 10, 'and': 3, 1000: 8
 }
 
-num = 1000
-numDigits = 0
-for i in str(num):
-    numDigits += 1
-
-print(numDigits)
-
 def countLetters(number):
+    numDigits = 0
+
+    for i in str(number):
+        numDigits += 1
+
     numLetters = 0
 
     while numDigits > 1:
@@ -24,4 +22,4 @@ def countLetters(number):
 
     print(numLetters)
 
-countLetters(42)
+countLetters(1)
