@@ -4,13 +4,24 @@ letterCounts = {
     40: 5, 50: 5, 60: 5, 70: 7, 80: 6, 90: 6, 100: 10, 'and': 3, 1000: 8
 }
 
+num = 1000
+numDigits = 0
+for i in str(num):
+    numDigits += 1
+
+print(numDigits)
+
 def countLetters(number):
     numLetters = 0
-    tensV1 = number // 10
-    tensV2 = tensV1 * 10
+
+    while numDigits > 1:
+        part = (number // 10) * 10
+        numLetters += letterCounts[part]
+        numDigits -= 1
+    
     units = number % 10
-    numLetters += letterCounts[tensV2]
     numLetters += letterCounts[units]
+
     print(numLetters)
 
 countLetters(42)
