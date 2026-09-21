@@ -7,7 +7,6 @@ letterCounts = {
 
 def countLetters(number):
     numLetters = 0
-    print(f"Passed number is: {number}")
     if number in letterCounts:
         numLetters = letterCounts[number]
     else:
@@ -22,16 +21,17 @@ def countLetters(number):
                 part = int((numList[0])) * 100
                 numLetters += letterCounts[part] + 3
                 numList.pop(0)
-                if numList[0] == 0:
-                    print(f"GOT HERE")
+                if numList[0] == '0':
                     numList.pop(0)
                     numDigits -= 2
                     number = int("".join(map(str, numList)))
+                number = int("".join(map(str, numList)))
+                elif number in letterCounts:
+                     numLetters += letterCounts[number]
+                     return numLetters
                 else:
                      numDigits -= 1
                      number = int("".join(map(str, numList)))
-               
-                print(f"Remaining number is: {number} and remaining digits are: {numDigits}")
                 
             if numDigits > 1:
                 part = (number // 10) * 10
@@ -41,12 +41,10 @@ def countLetters(number):
         units = number % 10
         numLetters += letterCounts[units]
 
-    print(numLetters)
     return numLetters
 
-countLetters(101)
-# totalLetters = 0
-# for i in range(1, 1001):
-#     totalLetters += countLetters(i)
+totalLetters = 0
+for i in range(1, 1001):
+    totalLetters += countLetters(i)
 
-# print(totalLetters)
+print(totalLetters)
