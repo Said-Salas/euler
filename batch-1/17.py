@@ -11,7 +11,7 @@ def countLetters(number):
         numLetters = letterCounts[number]
     else:
         numDigits = 0
-
+        
         for i in str(number):
             numDigits += 1
 
@@ -22,26 +22,19 @@ def countLetters(number):
                 numLetters += letterCounts[part] + 3
                 numList.pop(0)
                 if numList[0] == '0':
-                    numList.pop(0)
-                    numDigits -= 2
-                    number = int("".join(map(str, numList)))
+                    numLetters += letterCounts[int(numList[1])]
+                    return numLetters
+            
                 number = int("".join(map(str, numList)))
-                elif number in letterCounts:
-                     numLetters += letterCounts[number]
-                     return numLetters
+                if number in letterCounts:
+                    numLetters += letterCounts[number]
+                    return numLetters
                 else:
-                     numDigits -= 1
-                     number = int("".join(map(str, numList)))
-                
-            if numDigits > 1:
-                part = (number // 10) * 10
-                numLetters += letterCounts[part]
-                numDigits -= 1
-        
-        units = number % 10
-        numLetters += letterCounts[units]
-
-    return numLetters
+                    part = (number // 10) * 10
+                    units = number % 10
+                    numLetters += letterCounts[part]
+                    numLetters += letterCounts[units]
+                    return numLetters
 
 totalLetters = 0
 for i in range(1, 1001):
