@@ -9,32 +9,38 @@ def countLetters(number):
     numLetters = 0
     if number in letterCounts:
         numLetters = letterCounts[number]
+        return numLetters
     else:
         numDigits = 0
         
         for i in str(number):
             numDigits += 1
 
-        while numDigits > 1:
-            if numDigits > 2:
-                numList = list(str(number))
-                part = int((numList[0])) * 100
-                numLetters += letterCounts[part] + 3
-                numList.pop(0)
-                if numList[0] == '0':
-                    numLetters += letterCounts[int(numList[1])]
-                    return numLetters
-            
-                number = int("".join(map(str, numList)))
-                if number in letterCounts:
-                    numLetters += letterCounts[number]
-                    return numLetters
-                else:
-                    part = (number // 10) * 10
-                    units = number % 10
-                    numLetters += letterCounts[part]
-                    numLetters += letterCounts[units]
-                    return numLetters
+        if numDigits > 2:
+            numList = list(str(number))
+            part = int((numList[0])) * 100
+            numLetters += letterCounts[part] + 3
+            numList.pop(0)
+            if numList[0] == '0':
+                numLetters += letterCounts[int(numList[1])]
+                return numLetters
+
+            number = int("".join(map(str, numList)))
+            if number in letterCounts:
+                numLetters += letterCounts[number]
+                return numLetters
+            else:
+                part = (number // 10) * 10
+                units = number % 10
+                numLetters += letterCounts[part]
+                numLetters += letterCounts[units]
+                return numLetters
+        
+        part = (number // 10) * 10
+        units = number % 10
+        numLetters += letterCounts[part]
+        numLetters += letterCounts[units]
+        return numLetters
 
 totalLetters = 0
 for i in range(1, 1001):
